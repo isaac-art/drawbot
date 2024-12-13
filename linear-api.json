@@ -1,0 +1,806 @@
+{
+  "3": {
+    "inputs": {
+      "ckpt_name": "SDXL/sd_xl_base_1.0.safetensors"
+    },
+    "class_type": "CheckpointLoaderSimple",
+    "_meta": {
+      "title": "Load Checkpoint"
+    }
+  },
+  "4": {
+    "inputs": {
+      "vae_name": "SDXL/sdxl_vae.safetensors"
+    },
+    "class_type": "VAELoader",
+    "_meta": {
+      "title": "Load VAE"
+    }
+  },
+  "5": {
+    "inputs": {
+      "image": "president.jpg",
+      "upload": "image"
+    },
+    "class_type": "LoadImage",
+    "_meta": {
+      "title": "Load Image"
+    }
+  },
+  "7": {
+    "inputs": {
+      "max_width": [
+        "224",
+        0
+      ],
+      "max_height": [
+        "224",
+        1
+      ],
+      "min_width": 0,
+      "min_height": 0,
+      "crop_if_required": "yes",
+      "images": [
+        "5",
+        0
+      ]
+    },
+    "class_type": "ConstrainImage|pysssss",
+    "_meta": {
+      "title": "Constrain Image 🐍"
+    }
+  },
+  "9": {
+    "inputs": {
+      "ipadapter_file": "ip-adapter-plus_sdxl_vit-h.safetensors"
+    },
+    "class_type": "IPAdapterModelLoader",
+    "_meta": {
+      "title": "IPAdapter Model Loader"
+    }
+  },
+  "10": {
+    "inputs": {
+      "clip_name": "CLIP-ViT-H-14-laion2B-s32B-b79K.safetensors"
+    },
+    "class_type": "CLIPVisionLoader",
+    "_meta": {
+      "title": "Load CLIP Vision"
+    }
+  },
+  "14": {
+    "inputs": {
+      "delimiter": "",
+      "clean_whitespace": "true",
+      "text_a": [
+        "58",
+        0
+      ],
+      "text_b": [
+        "15",
+        0
+      ],
+      "text_c": [
+        "15",
+        1
+      ],
+      "text_d": [
+        "15",
+        2
+      ]
+    },
+    "class_type": "Text Concatenate",
+    "_meta": {
+      "title": "Text Concatenate"
+    }
+  },
+  "15": {
+    "inputs": {
+      "text": ", black and white, ",
+      "text_b": "colorless, ",
+      "text_c": "lineart, linework.",
+      "text_d": ""
+    },
+    "class_type": "Text String",
+    "_meta": {
+      "title": "Text String"
+    }
+  },
+  "16": {
+    "inputs": {
+      "width": [
+        "224",
+        0
+      ],
+      "height": [
+        "224",
+        1
+      ],
+      "crop_w": 0,
+      "crop_h": 0,
+      "target_width": [
+        "224",
+        0
+      ],
+      "target_height": [
+        "224",
+        1
+      ],
+      "text_g": [
+        "29",
+        0
+      ],
+      "text_l": [
+        "29",
+        0
+      ],
+      "clip": [
+        "3",
+        1
+      ]
+    },
+    "class_type": "CLIPTextEncodeSDXL",
+    "_meta": {
+      "title": "CLIPTextEncodeSDXL"
+    }
+  },
+  "17": {
+    "inputs": {
+      "width": [
+        "224",
+        0
+      ],
+      "height": [
+        "224",
+        1
+      ],
+      "crop_w": 0,
+      "crop_h": 0,
+      "target_width": [
+        "224",
+        0
+      ],
+      "target_height": [
+        "224",
+        1
+      ],
+      "text_g": [
+        "29",
+        1
+      ],
+      "text_l": [
+        "29",
+        1
+      ],
+      "clip": [
+        "3",
+        1
+      ]
+    },
+    "class_type": "CLIPTextEncodeSDXL",
+    "_meta": {
+      "title": "CLIPTextEncodeSDXL"
+    }
+  },
+  "18": {
+    "inputs": {
+      "coarse": "disable",
+      "resolution": 1024,
+      "image": [
+        "188",
+        0
+      ]
+    },
+    "class_type": "LineArtPreprocessor",
+    "_meta": {
+      "title": "Realistic Lineart"
+    }
+  },
+  "20": {
+    "inputs": {
+      "control_net_name": "SDXL/control-lora-canny-rank256.safetensors"
+    },
+    "class_type": "ControlNetLoader",
+    "_meta": {
+      "title": "Load ControlNet Model"
+    }
+  },
+  "21": {
+    "inputs": {
+      "control_net_name": "SDXL/control-lora-depth-rank256.safetensors"
+    },
+    "class_type": "ControlNetLoader",
+    "_meta": {
+      "title": "Load ControlNet Model"
+    }
+  },
+  "22": {
+    "inputs": {
+      "resolution": 1024,
+      "image": [
+        "188",
+        0
+      ]
+    },
+    "class_type": "Zoe-DepthMapPreprocessor",
+    "_meta": {
+      "title": "Zoe Depth Map"
+    }
+  },
+  "23": {
+    "inputs": {
+      "image": [
+        "18",
+        0
+      ]
+    },
+    "class_type": "ImageInvert",
+    "_meta": {
+      "title": "Invert Image"
+    }
+  },
+  "24": {
+    "inputs": {
+      "strength": 0.7000000000000001,
+      "start_percent": 0,
+      "end_percent": 1,
+      "positive": [
+        "16",
+        0
+      ],
+      "negative": [
+        "17",
+        0
+      ],
+      "control_net": [
+        "21",
+        0
+      ],
+      "image": [
+        "22",
+        0
+      ]
+    },
+    "class_type": "ControlNetApplyAdvanced",
+    "_meta": {
+      "title": "Apply ControlNet"
+    }
+  },
+  "25": {
+    "inputs": {
+      "strength": 1,
+      "start_percent": 0,
+      "end_percent": 1,
+      "positive": [
+        "24",
+        0
+      ],
+      "negative": [
+        "24",
+        1
+      ],
+      "control_net": [
+        "20",
+        0
+      ],
+      "image": [
+        "18",
+        0
+      ]
+    },
+    "class_type": "ControlNetApplyAdvanced",
+    "_meta": {
+      "title": "Apply ControlNet"
+    }
+  },
+  "26": {
+    "inputs": {
+      "images": [
+        "22",
+        0
+      ]
+    },
+    "class_type": "PreviewImage",
+    "_meta": {
+      "title": "Preview Image"
+    }
+  },
+  "27": {
+    "inputs": {
+      "images": [
+        "18",
+        0
+      ]
+    },
+    "class_type": "PreviewImage",
+    "_meta": {
+      "title": "Preview Image"
+    }
+  },
+  "29": {
+    "inputs": {
+      "text_positive": [
+        "227",
+        0
+      ],
+      "text_negative": "shadows, gray fill, blurry, watermark, text, dark background, thick, whispy, gentle, color, shading, gradient, transparency",
+      "style": "line art",
+      "log_prompt": "No",
+      "style_name": true
+    },
+    "class_type": "SDXLPromptStyler",
+    "_meta": {
+      "title": "SDXL Prompt Styler"
+    }
+  },
+  "30": {
+    "inputs": {
+      "add_noise": "enable",
+      "noise_seed": 318983566286332,
+      "steps": 20,
+      "cfg": 10,
+      "sampler_name": "euler_ancestral",
+      "scheduler": "karras",
+      "start_at_step": 0,
+      "end_at_step": 10000,
+      "return_with_leftover_noise": "enable",
+      "model": [
+        "229",
+        0
+      ],
+      "positive": [
+        "25",
+        0
+      ],
+      "negative": [
+        "25",
+        1
+      ],
+      "latent_image": [
+        "41",
+        0
+      ]
+    },
+    "class_type": "KSamplerAdvanced",
+    "_meta": {
+      "title": "KSampler (Advanced)"
+    }
+  },
+  "32": {
+    "inputs": {
+      "pixels": [
+        "23",
+        0
+      ],
+      "vae": [
+        "4",
+        0
+      ]
+    },
+    "class_type": "VAEEncode",
+    "_meta": {
+      "title": "VAE Encode"
+    }
+  },
+  "33": {
+    "inputs": {
+      "samples": [
+        "30",
+        0
+      ],
+      "vae": [
+        "4",
+        0
+      ]
+    },
+    "class_type": "VAEDecode",
+    "_meta": {
+      "title": "VAE Decode"
+    }
+  },
+  "34": {
+    "inputs": {
+      "upscale_by": 2,
+      "seed": 305024216749259,
+      "steps": 20,
+      "cfg": 8,
+      "sampler_name": "euler_ancestral",
+      "scheduler": "karras",
+      "denoise": 0.25,
+      "mode_type": "None",
+      "tile_width": 1024,
+      "tile_height": 1024,
+      "mask_blur": 8,
+      "tile_padding": 32,
+      "seam_fix_mode": "None",
+      "seam_fix_denoise": 1,
+      "seam_fix_width": 64,
+      "seam_fix_mask_blur": 8,
+      "seam_fix_padding": 16,
+      "force_uniform_tiles": false,
+      "tiled_decode": false,
+      "image": [
+        "198",
+        0
+      ],
+      "model": [
+        "231",
+        0
+      ],
+      "positive": [
+        "25",
+        0
+      ],
+      "negative": [
+        "25",
+        1
+      ],
+      "vae": [
+        "4",
+        0
+      ],
+      "upscale_model": [
+        "42",
+        0
+      ]
+    },
+    "class_type": "UltimateSDUpscale",
+    "_meta": {
+      "title": "Ultimate SD Upscale"
+    }
+  },
+  "37": {
+    "inputs": {
+      "filename_prefix": "ComfyUI",
+      "images": [
+        "198",
+        0
+      ]
+    },
+    "class_type": "SaveImage",
+    "_meta": {
+      "title": "Final"
+    }
+  },
+  "41": {
+    "inputs": {
+      "amount": 1,
+      "samples": [
+        "32",
+        0
+      ]
+    },
+    "class_type": "RepeatLatentBatch",
+    "_meta": {
+      "title": "Repeat Latent Batch"
+    }
+  },
+  "42": {
+    "inputs": {
+      "model_name": "4x_foolhardy_Remacri.pth"
+    },
+    "class_type": "UpscaleModelLoader",
+    "_meta": {
+      "title": "Load Upscale Model"
+    }
+  },
+  "44": {
+    "inputs": {
+      "images": [
+        "23",
+        0
+      ]
+    },
+    "class_type": "PreviewImage",
+    "_meta": {
+      "title": "Preview Image"
+    }
+  },
+  "58": {
+    "inputs": {
+      "text": [
+        "233",
+        0
+      ],
+      "text2": "a woman with red hair and blue eyes is looking at the camera with a serious look on her face, isolated against a black background\n\n"
+    },
+    "class_type": "ShowText|pysssss",
+    "_meta": {
+      "title": "Show Text 🐍"
+    }
+  },
+  "63": {
+    "inputs": {
+      "filename_prefix": "ComfyUI",
+      "images": [
+        "34",
+        0
+      ]
+    },
+    "class_type": "SaveImage",
+    "_meta": {
+      "title": "Final Upscale BW"
+    }
+  },
+  "64": {
+    "inputs": {
+      "filename_prefix": "ComfyUI",
+      "images": [
+        "184",
+        0
+      ]
+    },
+    "class_type": "SaveImage",
+    "_meta": {
+      "title": "Final Upscale BW Level"
+    }
+  },
+  "137": {
+    "inputs": {
+      "text": ""
+    },
+    "class_type": "Text Multiline",
+    "_meta": {
+      "title": "Positive Prompt"
+    }
+  },
+  "184": {
+    "inputs": {
+      "black_level": 0,
+      "mid_level": 127.5,
+      "white_level": 255,
+      "image": [
+        "34",
+        0
+      ]
+    },
+    "class_type": "Image Levels Adjustment",
+    "_meta": {
+      "title": "Image Levels Adjustment"
+    }
+  },
+  "188": {
+    "inputs": {
+      "transparency": true,
+      "model": "u2net",
+      "post_processing": false,
+      "only_mask": false,
+      "alpha_matting": false,
+      "alpha_matting_foreground_threshold": 240,
+      "alpha_matting_background_threshold": 10,
+      "alpha_matting_erode_size": 10,
+      "background_color": "none",
+      "images": [
+        "7",
+        0
+      ]
+    },
+    "class_type": "Image Rembg (Remove Background)",
+    "_meta": {
+      "title": "Image Rembg (Remove Background)"
+    }
+  },
+  "189": {
+    "inputs": {
+      "images": [
+        "188",
+        0
+      ]
+    },
+    "class_type": "PreviewImage",
+    "_meta": {
+      "title": "Preview Image"
+    }
+  },
+  "198": {
+    "inputs": {
+      "brightness": 0,
+      "contrast": 1,
+      "saturation": 0,
+      "sharpness": 1,
+      "blur": 0,
+      "gaussian_blur": 0,
+      "edge_enhance": 0,
+      "detail_enhance": "false",
+      "image": [
+        "33",
+        0
+      ]
+    },
+    "class_type": "Image Filter Adjustments",
+    "_meta": {
+      "title": "Image Filter Adjustments"
+    }
+  },
+  "209": {
+    "inputs": {
+      "interpolation": "LANCZOS",
+      "crop_position": "center",
+      "sharpening": 0.7000000000000001,
+      "image": [
+        "23",
+        0
+      ]
+    },
+    "class_type": "PrepImageForClipVision",
+    "_meta": {
+      "title": "Prep Image For ClipVision"
+    }
+  },
+  "210": {
+    "inputs": {
+      "images": [
+        "209",
+        0
+      ]
+    },
+    "class_type": "PreviewImage",
+    "_meta": {
+      "title": "Preview Image"
+    }
+  },
+  "218": {
+    "inputs": {
+      "ipadapter_file": "ip-adapter-plus-face_sdxl_vit-h.safetensors"
+    },
+    "class_type": "IPAdapterModelLoader",
+    "_meta": {
+      "title": "IPAdapter Model Loader"
+    }
+  },
+  "221": {
+    "inputs": {
+      "clip_name": "CLIP-ViT-H-14-laion2B-s32B-b79K.safetensors"
+    },
+    "class_type": "CLIPVisionLoader",
+    "_meta": {
+      "title": "Load CLIP Vision"
+    }
+  },
+  "224": {
+    "inputs": {
+      "image": [
+        "5",
+        0
+      ]
+    },
+    "class_type": "CM_NearestSDXLResolution",
+    "_meta": {
+      "title": "NearestSDXLResolution"
+    }
+  },
+  "226": {
+    "inputs": {
+      "filename_prefix": "ComfyUI",
+      "images": [
+        "198",
+        0
+      ]
+    },
+    "class_type": "SaveImage",
+    "_meta": {
+      "title": "Final"
+    }
+  },
+  "227": {
+    "inputs": {
+      "text": [
+        "14",
+        0
+      ],
+      "text2": "a woman with red hair and blue eyes is looking at the camera with a serious look on her face, isolated against a black background, black and white,colorless,lineart, linework."
+    },
+    "class_type": "ShowText|pysssss",
+    "_meta": {
+      "title": "Show Text 🐍"
+    }
+  },
+  "229": {
+    "inputs": {
+      "weight": 0.6,
+      "weight_type": "ease in-out",
+      "combine_embeds": "concat",
+      "start_at": 0,
+      "end_at": 1,
+      "embeds_scaling": "V only",
+      "model": [
+        "230",
+        0
+      ],
+      "ipadapter": [
+        "218",
+        0
+      ],
+      "image": [
+        "209",
+        0
+      ],
+      "clip_vision": [
+        "10",
+        0
+      ]
+    },
+    "class_type": "IPAdapterAdvanced",
+    "_meta": {
+      "title": "IPAdapter Advanced"
+    }
+  },
+  "230": {
+    "inputs": {
+      "weight": 0.6,
+      "weight_type": "ease in-out",
+      "combine_embeds": "concat",
+      "start_at": 0,
+      "end_at": 1,
+      "embeds_scaling": "V only",
+      "model": [
+        "231",
+        0
+      ],
+      "ipadapter": [
+        "9",
+        0
+      ],
+      "image": [
+        "209",
+        0
+      ],
+      "clip_vision": [
+        "221",
+        0
+      ]
+    },
+    "class_type": "IPAdapterAdvanced",
+    "_meta": {
+      "title": "IPAdapter Advanced"
+    }
+  },
+  "231": {
+    "inputs": {
+      "scale": 0.5,
+      "blur_sigma": 2,
+      "model": [
+        "3",
+        0
+      ]
+    },
+    "class_type": "SelfAttentionGuidance",
+    "_meta": {
+      "title": "Self-Attention Guidance"
+    }
+  },
+  "232": {
+    "inputs": {
+      "blip_model": "Salesforce/blip-image-captioning-base",
+      "vqa_model_id": "Salesforce/blip-vqa-base",
+      "device": "cuda"
+    },
+    "class_type": "BLIP Model Loader",
+    "_meta": {
+      "title": "BLIP Model Loader"
+    }
+  },
+  "233": {
+    "inputs": {
+      "mode": "caption",
+      "question": "What does the background consist of?",
+      "min_length": 24,
+      "max_length": 64,
+      "num_beams": 5,
+      "no_repeat_ngram_size": 3,
+      "early_stopping": false,
+      "images": [
+        "188",
+        0
+      ],
+      "blip_model": [
+        "232",
+        0
+      ]
+    },
+    "class_type": "BLIP Analyze Image",
+    "_meta": {
+      "title": "BLIP Analyze Image"
+    }
+  }
+}
